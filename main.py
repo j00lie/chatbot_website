@@ -3,7 +3,7 @@ Sources:
 
 https://chatbotsmagazine.com/contextual-chat-bots-with-tensorflow-4391749d0077
 
-https://www.youtube.com/watch?v=k1SzvvFtl4w
+https://www.youtube.com/watch?v=a37BL0stIuM
 
 https://www.geeksforgeeks.org/deploy-a-chatbot-using-tensorflow-in-python/
 
