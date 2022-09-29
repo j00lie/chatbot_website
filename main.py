@@ -26,18 +26,13 @@ all_words = pickle.load(open("all_words.pkl", "rb"))
 tags = pickle.load(open("tags.pkl", "rb"))
 model = load_model("chatbot")
 
-# print(model.summary())
 
 bot_name = "Keijo"
 
-print("Lets chat! Type 'quit' to exit")
 
-while True:
-    sentence = input("You: ")
-    if sentence == "quit":
-        break
+def get_response(message):
 
-    sentence = tokenize(sentence)
+    sentence = tokenize(message)
     bow = bag_off_words(sentence, all_words)
     bow = bow.reshape(1, bow.shape[0])
 
@@ -51,6 +46,17 @@ while True:
     if np.max(output) > 0.5:
         for intent in intents["intents"]:
             if tag == intent["tag"]:
-                print(f"{bot_name}: {random.choice(intent['responses'])}")
+                return random.choice(intent["responses"])
     else:
-        print(f"{bot_name}: I dont understand..")
+        return "I dont understand.."
+
+
+def main():
+    print("Lets chat! Type 'quit' to exit")
+
+    while True:
+        sentence = input("You: ")
+        if sentence == "quit":
+            break
+        answer = get_response(sentence)
+        print(answer)
